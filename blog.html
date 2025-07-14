@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - moveKenya</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #26333f;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #26333f, #434d56);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    .blog-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .blog-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-left: 5px solid #d06f49;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      flex: 1 1 320px;
+      transition: transform 0.2s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card h3 {
+      margin-top: 0;
+      color: #26333f;
+    }
+
+    .blog-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .blog-card a {
+      color: #d06f49;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .blog-card a:hover {
+      text-decoration: underline;
+    }
+
+    .readmore {
+      display: block;
+      margin-top: 10px;
+      color: #d06f49;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: #26333f;
+      color: #fff;
+      padding: 60px 30px 30px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-column {
+      flex: 1 1 280px;
+    }
+
+    .footer-column h3 {
+      color: #d06f49;
+      margin-bottom: 16px;
+      font-size: 18px;
+      border-bottom: 2px solid #434d56;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .logo-area h2 {
+      font-size: 24px;
+      margin: 10px 0 5px;
+      color: #fff;
+    }
+
+    .logo-area p {
+      font-size: 14px;
+      color: #aaa;
+      margin: 0 0 20px;
+    }
+
+    .footer-column p {
+      line-height: 1.6;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .contact-info p span {
+      color: #d06f49;
+      margin-right: 8px;
+    }
+
+    .nav-links ul,
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links ul li,
+    .hours-list li {
+      margin: 8px 0;
+      color: #bbb;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-links ul li a {
+      text-decoration: none;
+      color: #bbb;
+    }
+
+    .nav-links ul li a:hover {
+      color: #fff;
+    }
+
+    .hours-list li span {
+      float: right;
+      color: #ddd;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      border-top: 1px solid #434d56;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #d06f49;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+    @media (max-width: 768px) {
+      .blog-grid {
+        flex-direction: column;
+      }
+      .footer-container {
+        flex-direction: column;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Moving Tips & Stories</h1>
+    <p>Explore the latest advice and insights from Kenya's #1 moving platform</p>
+  </header>
+
+  <section class="blog-section">
+    <div class="blog-grid">
+      <div class="blog-card">
+        <h3>5 Things to Do Before Moving Day</h3>
+        <p>From organizing your items to checking access routes — make sure you're fully prepared.</p>
+        <a class="readmore" href = "./Blog-Moving-Day-Prep.html">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>How to Transport Fragile Items Safely</h3>
+        <p>Learn the best materials and techniques to prevent damage during relocation.</p>
+        <a class="readmore" href="./Blog-Fragile-Items.html">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Moving With Pets? Here’s What You Need to Know</h3>
+        <p>From crate training to hydration tips — ensure your furry friend has a smooth ride.</p>
+        <a class="readmore" href="./Blog-Pet-Moving.html">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>The Benefits of Using moveKenya Over Local Movers</h3>
+        <p>Discover why tech-driven relocation gives you more peace of mind and control.</p>
+        <a class="readmore" href="./Blog-Why-Movekenya.html">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Checklist: What to Pack First and Last</h3>
+        <p>Confused about packing order? Use our expert checklist to minimize stress and chaos.</p>
+        <a class="readmore" href="./Blog-Packing-Checklist.html">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Office Relocation Guide for Businesses</h3>
+        <p>Relocating your office soon? Here’s how to make it smooth with minimal downtime.</p>
+        <a class="readmore" href="./Blog-Office-Moving.html">Read More →</a>
+      </div>
+    </div>
+  </section>
+
+ <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column logo-area">
+        <h2>moveKenya</h2>
+        <p>Reliable Moving Solutions</p>
+        <p>
+          moveKenya connects you with verified moving companies across Kenya. Whether you're relocating your home, office, pets, or fragile items—we’ve got you covered.
+        </p>
+        <div class="contact-info">
+          <p><span>📞</span> +254 712 345 678</p>
+          <p><span>📧</span> support@movekenya.co.ke</p>
+          <p><span>📍</span> Nairobi, Kenya</p>
+        </div>
+      </div>
+
+      <div class="footer-column nav-links">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/services">Our Services</a></li>
+          <li><a href="/booking">Book a Move</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/blog">Moving Blog</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Support Hours</h3>
+        <p>We're here for you <span style="color:#d06f49;">24/7</span> – all year round.</p>
+        <ul class="hours-list">
+          <li>Mon - Fri <span>8AM - 5PM</span></li>
+          <li>Saturday <span>9AM - 2PM</span></li>
+          <li>Sunday <span>Email Support Only</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 moveKenya. All rights reserved.</p>
+      <div>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

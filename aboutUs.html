@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - moveKenya</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #26333f;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #26333f, #434d56);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #d06f49;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      background-color: #fff;
+      padding: 20px;
+      border-left: 5px solid #d06f49;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .grid .card {
+      background-color: #ffffff;
+      border-left: 5px solid #d06f49;
+      padding: 20px;
+      flex: 1 1 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .grid .card h3 {
+      color: #26333f;
+      margin-bottom: 10px;
+    }
+
+    .grid .card p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin-top: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #d06f49;
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 20px;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border: 3px solid #d06f49;
+      border-radius: 50%;
+    }
+
+    .values-section, .mission-vision-section {
+      background-color: #ffffff;
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .values-section h3, .mission-vision-section h3 {
+      color: #d06f49;
+      margin-bottom: 16px;
+    }
+
+    .footer {
+      background-color: #26333f;
+      color: #fff;
+      padding: 60px 30px 30px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-column {
+      flex: 1 1 280px;
+    }
+
+    .footer-column h3 {
+      color: #d06f49;
+      margin-bottom: 16px;
+      font-size: 18px;
+      border-bottom: 2px solid #434d56;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .logo-area h2 {
+      font-size: 24px;
+      margin: 10px 0 5px;
+      color: #fff;
+    }
+
+    .logo-area p {
+      font-size: 14px;
+      color: #aaa;
+      margin: 0 0 20px;
+    }
+
+    .footer-column p {
+      line-height: 1.6;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .contact-info p span {
+      color: #d06f49;
+      margin-right: 8px;
+    }
+
+    .nav-links ul,
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links ul li,
+    .hours-list li {
+      margin: 8px 0;
+      color: #bbb;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-links ul li a {
+      text-decoration: none;
+      color: #bbb;
+    }
+
+    .nav-links ul li a:hover {
+      color: #fff;
+    }
+
+    .hours-list li span {
+      float: right;
+      color: #ddd;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      border-top: 1px solid #434d56;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #d06f49;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About moveKenya</h1>
+    <p>Innovating the way Kenya moves — with care, tech, and trust</p>
+  </header>
+
+  <section class="section">
+    <h2>Our Story</h2>
+    <div class="highlight">
+      <p>moveKenya was born from a vision: to transform how people relocate across Kenya. From humble beginnings, we've built a platform that integrates live tracking, verified movers, and seamless booking into one trusted system.</p>
+    </div>
+
+    <h2>How We Work</h2>
+    <div class="timeline">
+      <div class="timeline-step">
+        <h3>Choose a Service</h3>
+        <p>Pick from home moves, fragile item transport, pet relocation, or office logistics.</p>
+      </div>
+      <div class="timeline-step">
+        <h3>Customize & Book</h3>
+        <p>Set pickup and destination, add items, and confirm with instant pricing.</p>
+      </div>
+      <div class="timeline-step">
+        <h3>Track in Real-Time</h3>
+        <p>Monitor every move via live GPS and stay connected with our support.</p>
+      </div>
+    </div>
+
+    <div class="mission-vision-section">
+      <h3>Our Mission</h3>
+      <p>To make moving safe, transparent, and tech-enabled across Kenya.</p>
+
+      <h3>Our Vision</h3>
+      <p>To be Kenya's #1 relocation tech partner — trusted by households, startups, and corporations alike.</p>
+    </div>
+
+    <div class="values-section">
+      <h3>Core Values</h3>
+      <ul>
+        <li><strong>Integrity:</strong> We operate with honesty and accountability.</li>
+        <li><strong>Innovation:</strong> We integrate technology into every part of your move.</li>
+        <li><strong>Customer First:</strong> We design services around your needs.</li>
+        <li><strong>Trust:</strong> Only verified, licensed partners make it to our platform.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column logo-area">
+        <h2>moveKenya</h2>
+        <p>Reliable Moving Solutions</p>
+        <p>
+          moveKenya connects you with verified moving companies across Kenya. Whether you're relocating your home, office, pets, or fragile items—we’ve got you covered.
+        </p>
+        <div class="contact-info">
+          <p><span>📞</span> +254 712 345 678</p>
+          <p><span>📧</span> support@movekenya.co.ke</p>
+          <p><span>📍</span> Nairobi, Kenya</p>
+        </div>
+      </div>
+
+      <div class="footer-column nav-links">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/services">Our Services</a></li>
+          <li><a href="/booking">Book a Move</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/blog">Moving Blog</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Support Hours</h3>
+        <p>We're here for you <span style="color:#d06f49;">24/7</span> – all year round.</p>
+        <ul class="hours-list">
+          <li>Mon - Fri <span>8AM - 5PM</span></li>
+          <li>Saturday <span>9AM - 2PM</span></li>
+          <li>Sunday <span>Email Support Only</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 moveKenya. All rights reserved.</p>
+      <div>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

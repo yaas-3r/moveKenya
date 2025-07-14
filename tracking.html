@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map route</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+       padding:0;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f8f8f8;
+    
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      grid-template-rows: 1fr 9fr 9fr 1fr;
+      height: 100vh;
+      gap: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .mapbox,
+    .box5 {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 10px;
+    }
+
+    .box1 {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      color: #d06f49;
+      background-color: white;
+      font-size: 1.5rem;
+      font-weight: 800;
+
+    }
+    .box2 {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      background-color: white;
+    }
+    .box3 {
+      grid-column: 1 / 2;
+      grid-row: 3 / 5;
+      background-color: white;
+    }
+    .mapbox {
+      grid-column: 2 / 3;
+      grid-row: 1 / 4;
+      
+      position: relative;
+    }
+   
+
+    .box5 {
+      grid-column: 2 / 3;
+      grid-row: 4 / 5;
+      height: 60px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 10px;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+    .route-container{
+        width: 100%;
+        height: 40%;
+        background-color: #e0e0e0;
+        border-radius: 1rem;
+        border: 1px solid #8b8b8b;
+    }
+    .route-step{
+        display: flex;
+        align-items: center;
+        margin-left: 1.5rem;
+    
+    }
+    .route-icon{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .icon1{
+        background-image: url("./images/sphere\ \(1\).png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .icon2{
+        background-image: url("./images/map_17939351.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .route-line{
+        width: 1px;
+        height: 4.3rem;
+        margin-bottom: 2px;
+        background-color: #8b8b8b;
+        margin-left: 2.2rem;
+    }
+    .route-text{
+        color: #838181;
+        font-weight: lighter;
+        margin-left: 1rem;
+    }
+    .payment-methodContainer{
+        width: 100%;
+        height: 4rem;
+        background-color:#e0e0e0 ;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #driver-profile{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-image: url("./images/driver-vincent.jpg");
+        background-size: cover;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+       
+    }
+    .chat-input-wrapper{
+        display: flex;
+        align-items: center;
+        background: #f5f6f8;
+        border-radius: 15rem;
+        padding: 10px 15px;
+        width: 16rem;
+    }
+    .chat-input{
+        border: none;
+        background: transparent;
+        font-size: 16px;
+        outline: none;
+        color: #2e2e3a;
+    }
+    .chat-icon{
+        width: 1.2rem;
+        height: 1.2rem;
+        background-image: url("./images/chat_10547720.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 8px;
+    }
+    .send-icon{
+       width: 2.5rem;
+       height: 2.5rem;
+       cursor: pointer;
+       background-color: #eeeded;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-left: 1rem;
+    }
+    .send-icon img{
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+    }
+    .chat-input2{
+       border: none;
+        background: transparent;
+        font-size: 16px;
+        outline: none;
+        color: #2e2e3a;
+        width: 100%;
+    }
+    .chat-input-wrapper2{
+        display: flex;
+        align-items: center;
+        background: #f5f6f8;
+        border-radius: 15rem;
+        padding: 20px 15px;
+        width: 80%;
+        margin-left: 3.9rem;
+    }
+    .chat-icon2{
+        width: 1.2rem;
+        height: 1.2rem;
+        background-image: url("./images/chat_10547720.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 8px;
+    }
+     .send-icon2{
+       width: 3.5rem;
+       height: 3.5rem;
+       cursor: pointer;
+       background-color: #f5f6f8;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-left: 1rem;
+    }
+    .send-icon2 img{
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+    }
+     .Chat-box{
+      max-width: fit-content;
+      height: auto;
+      background-color:#dad3d1 ;
+      color: black;
+      padding: 10px 10px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    #chat-display::-webkit-scrollbar {
+      display: none; 
+    }
+    /* #chat-wrapper::before{
+        content: "";
+        width: 2rem;
+        height: 2rem;
+        background-image: url("./images/Cancel\ icon.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top:-2.5rem;
+        left: 0;
+    } */
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box1"></div>
+    <div class="box2">
+        <h2 >My Route</h2>
+        <div class="route-container">
+            <div class="route-step" style="margin-top: 1rem;">
+                <div class="route-icon icon1"></div>
+                <div class="route-text pickup"></div>
+            </div>
+              <div class="route-line"></div>
+             <div class="route-step">
+                <div class="route-icon icon2"></div>
+                <div class="route-text dropoff"></div>
+            </div>
+
+            <h2 style="margin-top: 2rem; margin-bottom: 0;">Payment method</h2>
+            <p style=" margin-top: 1rem; color: #838181; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Payment status: <span style="color: rgb(27, 155, 27);">Confirmed</span></p>
+            
+            <div class="payment-methodContainer">
+                <div class="payment-icon" style=" margin-left: 1rem; width: 20%; height: 70%; background-size: contain; background-repeat: no-repeat;"></div>
+                <div class="total" style="margin-right: 1rem;"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="box3">
+        <div id="move-vehicle" style="width: 100%; height: 40%; background-size: contain; background-repeat: no-repeat;  "></div>
+        <div style="width: 100%; height: 5rem; margin-top: 1.5rem; display: flex; align-items: center;">
+          <diV id="driver-profile" style="cursor: pointer;" onclick="showProfile()"></diV>
+          <div style="margin-left: 1rem;"> 
+            <p style="margin: 0; padding: 0; background-color: #e0e0e0; border: 1px solid #cccbcb; border-radius: 4px; padding: 4px;">KCD 512C</p>
+            <P style="margin: 0; padding: 0; color: #838181;">Vincent Ruiru</P>
+          </div>
+        </div>
+        <div id="profileModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 1000; width: 300px;  justify-content: center; flex-direction: column;">
+            <h3>Driver Profile</h3>
+            <div style="background-image: url(./images/driver-vincent.jpg); width: 8rem; height: 8rem; border-radius: 50%; background-size: cover;"></div>
+            <p><strong>Name:</strong> Vincent Ruiru</p>
+            <p><strong>Vehicle:</strong> KCD 512C</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐</p>
+            <button onclick="closeProfile()" style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; width: 80%; margin: auto;">Close</button>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 1rem;">
+            <div class="chat-input-wrapper">
+                <div class="chat-icon" onclick="openChatBox()" style="cursor: pointer;"></div>
+                <input id="message-input1" class="chat-input" type="text" placeholder="Message driver">
+            
+            </div> 
+            <div class="send-icon">
+                    <img src="./images/send_3608124.png" alt="send">
+            </div>
+        </div>
+
+    </div>
+    <div class="mapbox">
+        <div id="map"></div>
+            <div style="display: flex; width: 50rem; position: absolute; bottom: 1rem; left: 2rem; gap: 1rem; z-index: 1000;">
+           
+            <div style="flex: 1; background-color: white; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <h3 style="margin: 0;">Driver <span style="color: green;">➜</span> You</h3>
+                <div style="width: 99%; height: 4rem;  margin: auto; display: flex; gap: 10px; justify-content: space-between;">
+                    <div style="width: 6.5rem; height: 100%; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                        <div id="driver-ETA" style="font-size: 1rem; color: black; margin: 0;"></div>
+                        <p style="color: grey; position: relative; top: 0.8rem;">⌛remaining</p>
+                    </div>
+                    <div style="width: 6.5rem; height: 4rem; background-color: #f5f6f8;  display: flex; flex-direction: column;  align-items: center; border-radius: 10px;">
+                        <div style="width: 80%; height: 70%; background-image: url(./images/zigzag_11752896.png); background-size: contain; background-repeat: no-repeat; background-position: center; "></div>
+                        <p style="	color: rgb(40, 219, 40); font-size: 15px; padding: 0; margin: 0;">400m</p>
+                    </div>
+                    <div style="width: 6.5rem; height: 100%; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                        <div id="driver-distance" style="font-size: 1.5rem; color: black; margin: 0; color: rgb(51, 218, 51); font-weight: bold;"></div>
+                        <p style="color: grey; position: relative; top: 0.8rem;">⌛remaining</p>
+                    </div>
+                </div>
+            </div>
+
+         
+            <div style="flex: 1; background-color: white; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                
+                <h3 style="margin: 0;">Pickup <span style="color: green;">➜</span> Dropoff</h3>
+                </div>
+                <div style="width: 99%; height: 4rem;  margin: auto; display: flex; gap: 10px; justify-content: space-between;">
+                    <div style="width: 6.5rem; height: 100%; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                        <div id="pickup-dropoff-ETA" style="font-size: 1rem; color: black; margin: 0;"></div>
+                        <p style="color: grey; position: relative; top: 0.8rem;">⌛remaining</p>
+                    </div>
+                    <div style="width: 6.5rem; height: 4rem; background-color: #f5f6f8;  display: flex; flex-direction: column;  align-items: center; border-radius: 10px;">
+                        <div style="width: 80%; height: 70%; background-image: url(./images/zigzag_11752896.png); background-size: contain; background-repeat: no-repeat; background-position: center; "></div>
+                        <p style="	color: rgb(40, 219, 40); font-size: 15px; padding: 0; margin: 0;">0m</p>
+                    </div>
+                    <div style="width: 6.5rem; height: 100%; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                        <div id="pickup-dropoff-distance" style="font-size: 1.5rem; color: black; margin: 0; color: rgb(51, 218, 51); font-weight: bold;"></div>
+                        <p style="color: grey; position: relative; top: 0.8rem;">⌛remaining</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+ <div class="box5 " style="display: flex; align-items: center;"> 
+    <div style="width: 40%; height: 60px;  display: flex; align-items: center; gap: 1rem;">
+       <h2 style="color: gray; font-size: 1rem;">Status: </h2>
+       <div style="width: 10rem; height: 2.5rem; background-color: #e4beaf; border: 1px solid #d06f49; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+        <p style="color: #d06f49; font-size: 1rem;" id="statusUpdate">Loading....</p>
+       </div>
+    </div>
+ </div>
+
+ <div id="chat-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgb(46, 46, 58,0.7); z-index: 2000; display: none; justify-content: center; align-items: center; flex-direction: column;">
+  <div id="chat-wrapper" style="width: 60%; height: 80%; background-color: white; border-radius: 1rem; padding: 0; position: relative;">
+      <div style="width: 100%; height: 6rem; box-shadow: 0 4px 8px rgba(0,0,0,0.3);  border-top-left-radius: 1rem; border-top-right-radius: 1rem;  display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+        <div style="display: flex; align-items: center;">
+          <div style="width: 4rem; height: 4rem; border-radius: 50%; background-color: #3b82f6; margin-left: 1rem;"></div>
+          <p style="margin-left: 1rem;">Vincent Ruiru</p>
+        </div>
+        <div style="width: 2rem; height: 2rem; background-image: url(./images/Cancel\ icon.png); background-size: contain; background-repeat: no-repeat; margin-right: 1rem; cursor: pointer;" onclick="closeChatBox()"></div>
+      </div>
+
+     <div id="chat-display" style="width: 100%; height: 70%; margin: auto; overflow-y: auto;  scrollbar-width: none; -ms-overflow-style: none; display: flex; flex-direction: column; scroll-behavior: smooth;"></div>
+
+      <div style="display: flex; align-items: center; margin-top: 2.5rem;">
+         <div class="chat-input-wrapper2">
+                <div class="chat-icon2"></div>
+                <input id="message-input" class="chat-input2" type="text" placeholder="Message driver" autocomplete="off">
+                
+            </div>
+             <div class="send-icon2" onclick="sendMessage()">
+                    <img src="./images/send_3608124.png" alt="send">
+            </div>
+      </div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function showProfile(){
+        document.getElementById("profileModal").style.display = "flex";
+    }
+    function closeProfile() {
+    document.getElementById("profileModal").style.display = "none";
+  }
+    function openChatBox(){
+      document.getElementById("chat-overlay").style.display = "flex";
+    }
+    function closeChatBox(){
+       document.getElementById("chat-overlay").style.display = "none";
+    }
+  </script>
+
+  
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script>
+
+
+    function formatDuration(minutes) {
+    const mins = Math.round(minutes);
+    if (mins < 60) {
+      return `${mins} min`;
+    } else {
+      const hours = Math.floor(mins / 60);
+      const remainingMins = mins % 60;
+    return `${hours} hr${hours > 1 ? 's' : ''} ${remainingMins} min`;
+  }
+}
+
+ key = new URLSearchParams(window.location.search).get("key");
+       const UserDetails = JSON.parse(sessionStorage.getItem(key));
+
+       if(UserDetails) console.log(UserDetails);
+
+
+        const name = UserDetails.name;
+        const noOfRooms = UserDetails.noOfRooms;
+        const userPhone = UserDetails.userPhone;
+        const date = UserDetails.date;
+        const totalValue = UserDetails.totalValue;
+        const recommendedVehicleId = UserDetails.recommendedVehicleId;
+        const service = UserDetails.service;
+        const paymentMethod = UserDetails.paymentMethod;
+        const pickupName = UserDetails.pickupName;
+        const pickupCoords = UserDetails.pickupCoords;
+        const dropOffName = UserDetails.dropOffName
+        const dropoffCoords = UserDetails.dropoffCoords;
+        const orderId = UserDetails.orderId;
+        let  distanceKm = "";
+        let durationMin = "";
+        let driverCoords = [36.8155, -1.3032];
+        const ws = new WebSocket("ws://localhost:3000");
+
+
+  ws.onopen = () =>{
+      console.log("Websocket successfully established with server at port:3000");
+  }
+
+
+  function sendMessage(){
+    const msg = document.getElementById("message-input").value;
+    if (!msg.trim()) return;
+    const div = document.createElement("div");
+      div.className = "Chat-box";
+      div.textContent = msg;
+      div.style.alignSelf = "flex-end";
+      div.style.marginRight = "1rem";
+      const displayBox = document.getElementById("chat-display");
+      displayBox.appendChild(div);
+      displayBox.scrollTop = displayBox.scrollHeight;
+
+
+      ws.send(JSON.stringify({
+        from: "User",
+        type: "Chat",
+        chat: msg
+      }))
+
+ 
+  document.getElementById("message-input").value = "";
+  }
+  document.getElementById("message-input").addEventListener("keydown", function(event){
+       if(event.key === "Enter"){
+        event.preventDefault();
+        sendMessage();
+       }
+    })
+
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoieWFhczNyIiwiYSI6ImNtYzZrMHQydDBybzQya3NjODIwb2F3YmMifQ.DMIbHrOr3DYHRILl8GqRQw'; // Replace with your public token
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: pickupCoords, 
+    zoom: 11
+  });
+  
+
+  new mapboxgl.Marker({ color: 'green' }).setLngLat(pickupCoords).addTo(map);
+  new mapboxgl.Marker({ color: 'red' }).setLngLat(dropoffCoords).addTo(map);
+ const driverMarker = new mapboxgl.Marker({
+  element: createCustomMarker('./images/driver-vincent.jpg'),
+  anchor: 'bottom'
+})
+.setLngLat(driverCoords)
+.addTo(map);
+
+function createCustomMarker(imgSrc) {
+  const el = document.createElement('div');
+  el.style.backgroundImage = `url('${imgSrc}')`;
+  el.style.width = '40px';
+  el.style.height = '40px';
+  el.style.backgroundSize = 'cover';
+  el.style.borderRadius = '50%';
+  el.style.boxShadow = '0 0 6px rgba(0,0,0,0.3)';
+  return el;
+}
+
+
+   map.on("load", () => {
+  getAndDrawRoute(
+    "driverToPickup",
+    driverCoords,
+    pickupCoords,
+    "#000000",
+    (distance, duration) => {
+       document.getElementById("driver-ETA").textContent = formatDuration(durationMin);
+         document.getElementById("driver-distance").textContent =
+        `${distance}km`;
+    }
+  );
+
+  getAndDrawRoute(
+    "pickupToDropoff",
+    pickupCoords,
+    dropoffCoords,
+    "#3b82f6",
+    (distance, duration) => {
+       document.getElementById("pickup-dropoff-ETA").textContent = formatDuration(durationMin);
+         document.getElementById("pickup-dropoff-distance").textContent =
+        `${distance}km`;
+    }
+  );
+});
+
+
+  function getAndDrawRoute(id, from, to, color, callback) {
+  const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${from[0]},${from[1]};${to[0]},${to[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const route = data.routes[0].geometry;
+
+      map.addSource(id, {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: route
+        }
+      });
+
+      map.addLayer({
+        id,
+        type: 'line',
+        source: id,
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': color,
+          'line-width': 5
+        }
+      });
+
+       distanceKm = (data.routes[0].distance / 1000).toFixed(2);
+       durationMin = Math.ceil(data.routes[0].duration / 60);
+      if (callback) callback(distanceKm, durationMin);
+
+  
+       const bounds = new mapboxgl.LngLatBounds(driverCoords, driverCoords);
+  bounds.extend(pickupCoords);
+  bounds.extend(dropoffCoords);
+  map.fitBounds(bounds, { padding: 60 });
+    });
+}
+
+  
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+       key = new URLSearchParams(window.location.search).get("key");
+       const UserDetails = JSON.parse(sessionStorage.getItem(key));
+
+        ws.onmessage = (event)=>{
+          let info;
+          try{
+            info =JSON.parse( event.data);
+          }catch{
+            console.log("Error while getting received Data!");
+          }
+
+            if(info.type === "StatusUpdate"){
+               const statusDisplayBox = document.getElementById("statusUpdate");
+               const statusMessage = info.updateMessage
+               console.log(statusMessage);
+               statusDisplayBox.textContent = statusMessage;
+            }else if(info.type === "Chat"){
+               const messageToDisplay = info.chat;
+
+               const div = document.createElement("div");
+               div.className = "Chat-box";
+               div.textContent = info.chat;
+               div.style.alignSelf = "flex-start";
+               div.style.marginLeft = "1rem";
+               const displayBox = document.getElementById("chat-display");
+               displayBox.appendChild(div);
+               displayBox.scrollTop = displayBox.scrollHeight;
+
+            }
+            
+        }
+
+       if(UserDetails) console.log(UserDetails);
+
+
+        
+        const vehicleName = {
+            van1: "./images/van 11.jpg",
+            van2: "./images/van3.jpg",
+            pickupStandard: "./images/pickup1.jpg",
+            pickupLarge: "Large Pickup",
+            truckPickup: "./images/pickup2.jpg",
+            canterStandard: "./images/pickup-truck.jpg",
+            largeCanter: "./images/canter1.jpg",
+            oilTruck: "./images/canter1.jpg"
+        };
+        const paymentIcons = {
+            mpesa : "./images/Mpesa.png",
+            cash : "./images/dollar_12316592.png"
+        }
+
+        document.querySelector(".box1").textContent = `Order ID: ${orderId}`;
+        document.getElementById("move-vehicle").style.backgroundImage = `url("${vehicleName[recommendedVehicleId]}")`;
+        document.querySelector(".pickup").textContent = pickupName;
+        document.querySelector(".dropoff").textContent = dropOffName;
+        document.querySelector(".payment-icon").style.backgroundImage = `url("${paymentIcons[paymentMethod]}")`;
+        document.querySelector(".total").textContent = `Ksh ${totalValue}`;
+        
+    })
+</script>
+
+</body>
+</html>

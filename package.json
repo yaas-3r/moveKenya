@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "ws": "^8.18.2"
+  },
+  "name": "movemate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Yaasir Mohammad",
+  "license": "ISC",
+  "description": "Referral and booking system for local moving companies with real-time GPS tracking."
+}
