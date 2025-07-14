@@ -4,6 +4,39 @@
 **moveKenya** is a modern, web-based platform for booking professional moving services across Kenya. Whether it's home relocation, office moving, pet transport, fragile items, or hazardous material handling, moveKenya offers users an intuitive interface with real-time features, dynamic vehicle recommendations, live chat with drivers, and seamless booking.
 
 ---
+## ✅ Prerequisite: Node.js
+
+Before running this project, make sure you have **Node.js** installed.
+
+Node.js is required to:
+
+- Run the backend server (`server.js`)
+- Use `npm` to install project dependencies
+
+### 🔍 How to Check if Node.js is Installed
+
+Open your terminal or command prompt and run:
+
+```bash
+node -v
+```
+
+If you see something like:
+
+```
+v18.16.0
+```
+
+✅ Node.js is installed correctly.
+
+### ❌ If Node.js Is Not Installed
+
+Download it from the official website:  
+👉 [https://nodejs.org](https://nodejs.org)
+
+> ✅ Recommended: Download the **LTS version** (Long-Term Support) for better compatibility.
+
+---
 
 ## ⚙️ Setup Instructions
 
