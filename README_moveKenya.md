@@ -89,7 +89,7 @@ http://localhost:3000
   Charges are calculated in real-time based on the service, room count, vehicle type, and optional item selections.
 
 - 💬 **Real-Time Chat with Driver**  
-  After booking, users can click on the **driver's profile picture** to open a chat window and communicate with the driver.  
+  After booking, users can click on the **chat icon on the input element** to open a chat window and communicate with the driver.  
   - The chat feature is real-time, powered by WebSockets.  
   - Functional on both the user page and driver page.
 
