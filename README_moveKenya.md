@@ -157,7 +157,7 @@ const token = process.env.MAPBOX_TOKEN;
 ## 📝 Developer Notes
 
 - You **must run** `npm install` before launching the server.
-- Ensure **Node.js** is installed (version 14 or higher recommended).
+- Ensure **Node.js** is installed (version 14 or higher is recommended).
 - All booking and chat logic is tied to both frontend interactivity and backend WebSocket support.
 - Use browser DevTools to monitor:
   - Real-time WebSocket chat messages
