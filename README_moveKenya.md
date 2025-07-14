@@ -115,11 +115,9 @@ http://localhost:3000
 
 ### 📄 Notes for Accessing Driver Pages:
 
-- ✅ If you want to visit the **functional driver page**, use:
-  (`/driver.html`)
-  
-- 🎨 If you want to visit the **UI version of the driver page**, use:
-  (`/index.html`)
+- ✅ If you want to visit the functional driver page, use: [http://localhost:3000/driver.html](http://localhost:3000/driver.html)
+
+- 🎨 If you want to visit the UI version of the driver page, use: [http://localhost:3000/index.html](http://localhost:3000/index.html)
 
 ---
 
