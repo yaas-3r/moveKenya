@@ -1,2 +1,0 @@
-# moveKenya
-Web Dev Project
